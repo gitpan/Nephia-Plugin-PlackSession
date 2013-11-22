@@ -5,11 +5,7 @@ META.json
 README.md
 cpanfile
 lib/Nephia/Plugin/PlackSession.pm
-lib/Nephia/Setup/PlackSession.pm
-lib/Nephia/Setup/PlackSession/DBI.pm
 t/00_compile.t
 t/01_session.t
-t/02_flavor.t
-t/03_flavor_dbi.t
 META.yml
 MANIFEST

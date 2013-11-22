@@ -1,11 +1,13 @@
 {
-   "abstract" : "Session Plugin for Nephia",
+   "abstract" : "Session plugin for Nephia",
    "author" : [
       "papix <mail@papix.net>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.5",
-   "license" : "perl_5",
+   "generated_by" : "Minilla/v0.9.0",
+   "license" : [
+      "perl_5"
+   ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
@@ -19,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -40,17 +43,14 @@
       },
       "runtime" : {
          "requires" : {
-            "DBI" : "0",
-            "Nephia" : "0.32",
-            "Plack::Builder" : "0",
+            "Nephia" : "0.80",
             "Plack::Middleware::Session" : "0",
             "perl" : "5.008005"
          }
       },
       "test" : {
          "requires" : {
-            "Capture::Tiny" : "0",
-            "Guard" : "0",
+            "Plack::Builder" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0",
             "Test::WWW::Mechanize::PSGI" : "0"
@@ -60,25 +60,19 @@
    "provides" : {
       "Nephia::Plugin::PlackSession" : {
          "file" : "lib/Nephia/Plugin/PlackSession.pm",
-         "version" : "0.01"
-      },
-      "Nephia::Setup::PlackSession" : {
-         "file" : "lib/Nephia/Setup/PlackSession.pm"
-      },
-      "Nephia::Setup::PlackSession::DBI" : {
-         "file" : "lib/Nephia/Setup/PlackSession/DBI.pm"
+         "version" : "0.80"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/papix/Nephia-Plugin-PlackSession/issues"
+         "web" : "https://github.com/nephia/Nephia-Plugin-PlackSession/issues"
       },
-      "homepage" : "https://github.com/papix/Nephia-Plugin-PlackSession",
+      "homepage" : "https://github.com/nephia/Nephia-Plugin-PlackSession",
       "repository" : {
-         "url" : "git://github.com/papix/Nephia-Plugin-PlackSession.git",
-         "web" : "https://github.com/papix/Nephia-Plugin-PlackSession"
+         "url" : "git://github.com/nephia/Nephia-Plugin-PlackSession.git",
+         "web" : "https://github.com/nephia/Nephia-Plugin-PlackSession"
       }
    },
-   "version" : "0.01"
+   "version" : "0.80"
 }

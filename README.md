@@ -1,33 +1,31 @@
 # NAME
 
-Nephia::Plugin::PlackSession - Session Plugin for Nephia
+Nephia::Plugin::PlackSession - Session plugin for Nephia
 
 # SYNOPSIS
-
-    # create project
-    % nephia-setup MyApp --flavor=PlackSession
 
     # app.psgi
     builder {
         enable 'Plack::Middleware::Session';
-        MyApp->run( $config );
+        MyApp->run();
     }
+    
 
     # MyApp.pm
-    package MyApp.pm;
+    package MyApp;
     use strict;
     use warnings;
-    use Nephia plugins => [
+    use Nephia plugins => [qw/
         'PlackSession'
-    ];
+    /];
 
-    path '/' => sub {
+    app {
         session->get($key);
         session->set($key, $value);
         session->remove($key);
         session->keys;
         session->expire;
-    }
+    };
 
 # DESCRIPTION
 

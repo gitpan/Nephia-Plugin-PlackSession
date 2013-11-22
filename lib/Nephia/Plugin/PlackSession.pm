@@ -2,51 +2,63 @@ package Nephia::Plugin::PlackSession;
 use 5.008005;
 use strict;
 use warnings;
-use Plack::Session;
+use parent 'Nephia::Plugin';
 
-our $VERSION = "0.01";
-our @EXPORT = qw/ session /;
+our $VERSION = "0.80";
+
+sub exports {
+    qw/ session /;
+}
 
 sub session {
-    my $req = context('req');
-    return Plack::Session->new($req->env);
+    my ($self, $context) = @_;
+
+    return sub {
+        my $session = $context->get('sessions');
+        if (defined $session) {
+            return $session;
+        } else {
+            my $req = $context->get('req');
+            $session = Plack::Session->new($req->env);
+            $context->set(sessions => $session);
+            return $session;
+        }
+    };
 }
 
 1;
+
 __END__
 
 =encoding utf-8
 
 =head1 NAME
 
-Nephia::Plugin::PlackSession - Session Plugin for Nephia
+Nephia::Plugin::PlackSession - Session plugin for Nephia
 
 =head1 SYNOPSIS
-
-    # create project
-    % nephia-setup MyApp --flavor=PlackSession
 
     # app.psgi
     builder {
         enable 'Plack::Middleware::Session';
-        MyApp->run( $config );
+        MyApp->run();
     }
-
+    
     # MyApp.pm
-    package MyApp.pm;
+    package MyApp;
     use strict;
     use warnings;
-    use Nephia plugins => [
+    use Nephia plugins => [qw/
         'PlackSession'
-    ];
+    /];
 
-    path '/' => sub {
+    app {
         session->get($key);
         session->set($key, $value);
         session->remove($key);
         session->keys;
         session->expire;
-    }
+    };
 
 =head1 DESCRIPTION
 
