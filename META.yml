@@ -31,7 +31,7 @@ no_index:
 provides:
   Nephia::Plugin::PlackSession:
     file: lib/Nephia/Plugin/PlackSession.pm
-    version: 0.80
+    version: 0.81
 requires:
   Nephia: 0.80
   Plack::Middleware::Session: 0
@@ -40,4 +40,6 @@ resources:
   bugtracker: https://github.com/nephia/Nephia-Plugin-PlackSession/issues
   homepage: https://github.com/nephia/Nephia-Plugin-PlackSession
   repository: git://github.com/nephia/Nephia-Plugin-PlackSession.git
-version: 0.80
+version: 0.81
+x_contributors:
+  - 'ytnobody <ytnobody@gmail.com>'

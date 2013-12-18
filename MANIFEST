@@ -5,6 +5,7 @@ META.json
 README.md
 cpanfile
 lib/Nephia/Plugin/PlackSession.pm
+minil.toml
 t/00_compile.t
 t/01_session.t
 META.yml
